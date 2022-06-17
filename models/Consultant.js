@@ -14,6 +14,9 @@ const consultantSchema = new Schema({
     },
     type: {
         type: String
+    },
+    workplace: {
+        type: String
     }
 })
 
