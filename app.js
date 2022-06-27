@@ -7,7 +7,6 @@ const morgan = require('morgan')
 const authRoutes = require('./routes/auth')
 const applicationRoutes = require('./routes/application')
 const organisationRoutes = require('./routes/organisation')
-const workplaceRoutes = require('./routes/workplace')
 const consultantRoutes = require('./routes/consultant')
 const app = express()
 
@@ -26,7 +25,6 @@ app.use(cors())
 app.use('/api/auth', authRoutes)
 app.use('/api/app', applicationRoutes)
 app.use('/api/organisation', organisationRoutes)
-app.use('/api/workplace', workplaceRoutes)
 app.use('/api/consultant', consultantRoutes)
 
 module.exports = app

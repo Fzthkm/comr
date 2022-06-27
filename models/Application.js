@@ -3,53 +3,57 @@ const Schema = mongoose.Schema
 
 const appSchema = new Schema({
     number: {
-        type: Number,
-        required: true
+        type: Number
     },
     date: {
-        type: Date,
-        required: true
+        type: String
     },
     organisation: {
-        ref: 'organisations',
-        type: Schema.Types.ObjectId
+        type: String
     },
-    user: {
-        ref: 'users',
-        type: Schema.Types.ObjectId,
-        required: true
-    },
+    // user: {
+    //     ref: 'users',
+    //     type: Schema.Types.ObjectId
+    // },
     COVID: {
-        type: Boolean
+        type: Boolean,
+        default: false
     },
-    patient: {
-        type: Object
+    patientName: {
+        type: String
+    },
+    patientYearOfBirth: {
+        type: String
     },
     diagnosis: {
         type: String
     },
-    consult: {
-        name: {
-            type: String
-        },
-        workplace: {
-            type: String
-        },
-        additionalInfo: {
-            type: String
-        },
-        type: {
-            type: String
-        }
+    name: {
+        type: String
+    },
+    position: {
+        type: String
+    },
+    workplace: {
+        type: String
+    },
+    additionalInfo: {
+        type: String
+    },
+    type: {
+        type: String
+    },
+    consultDate: {
+        type: String
+    },
+    consultType: {
+        type: String
     },
     description: {
         type: String
     },
     report: {
         type: String
-    },
-    canceled: {
-        type: Boolean
     }
 })
 
