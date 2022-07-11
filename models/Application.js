@@ -11,10 +11,6 @@ const appSchema = new Schema({
     organisation: {
         type: String
     },
-    // user: {
-    //     ref: 'users',
-    //     type: Schema.Types.ObjectId
-    // },
     COVID: {
         type: Boolean,
         default: false
@@ -53,6 +49,9 @@ const appSchema = new Schema({
         type: String
     },
     report: {
+        type: String
+    },
+    userId: {
         type: String
     }
 })

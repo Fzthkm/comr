@@ -10,7 +10,7 @@ const organisationRoutes = require('./routes/organisation')
 const consultantRoutes = require('./routes/consultant')
 const app = express()
 
-mongoose.connect('mongodb://localhost:27017')
+mongoose.connect('mongodb://0.0.0.0:27017')
     .then(() => console.log('MongoDB connected.'))
     .catch((error) => console.log(error))
 
@@ -24,7 +24,7 @@ app.use(cors())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/app', applicationRoutes)
-app.use('/api/organisation', organisationRoutes)
-app.use('/api/consultant', consultantRoutes)
+app.use('/api/org', organisationRoutes)
+app.use('/api/consult', consultantRoutes)
 
 module.exports = app

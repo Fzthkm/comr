@@ -18,7 +18,8 @@ module.exports.create = async (req, res) => {
             consultDate: req.body.consultDate,
             consultType: req.body.consultType,
             description: req.body.description,
-            report: req.body.report
+            report: req.body.report,
+            userId: 1
         })
         await app.save().then(() => {
             res.status(201).json(app)
@@ -30,7 +31,7 @@ module.exports.create = async (req, res) => {
 
 module.exports.getById = async (req, res) => {
     try {
-        const app = Application.findById(req.body.id)
+        const app = await Application.findById(req.params.id)
         res.status(200).json(app)
     } catch (e) {
         console.log(e)
@@ -38,7 +39,45 @@ module.exports.getById = async (req, res) => {
 }
 
 module.exports.getAll = async (req, res) => {
-    const apps = Application.find()
-    res.status(200).json({apps})
+    try {
+        const apps = await Application.find()
+        res.status(200).json(apps)
+    } catch (e) {
+        console.log(e)
+    }
 }
 
+module.exports.update = async (req, res) => {
+    try {
+        const app = await Application.findOneAndUpdate(
+            {_id: req.params.id},
+            {$set: req.body},
+            {new: true}
+        )
+        res.status(200).json({
+            message: "Обновлено"
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+module.exports.remove = async (req, res) => {
+    try {
+        await Application.findByIdAndRemove(req.params.id)
+        res.status(200).json({
+            message: "Заявка была удалена"
+        })
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+module.exports.getLastId = async (req, res) => {
+    try {
+        const app = await Application.find().sort({_id: -1}).limit(1)
+        res.status(200).json(app[0])
+    } catch (e) {
+        console.log(e)
+    }
+}

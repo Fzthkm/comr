@@ -12,7 +12,7 @@ module.exports.login = async (req, res) => {
                 const token = jwt.sign({
                     login: candidate.login,
                     userId: candidate._id,
-                    rules: candidate.rule
+                    rules: candidate.rules
                 }, 'comr', {expiresIn: 24 * 60 * 60})
                 res.status(200).json({
                     token: `Bearer ${token}`
@@ -47,14 +47,6 @@ module.exports.register = async (req, res) => {
             await user.save().then(() => console.log('User created'));
             res.status(201).json(user);
         }
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-module.exports.changePassword = async (req, res) => {
-    try {
-
     } catch (e) {
         console.log(e)
     }

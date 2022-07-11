@@ -6,6 +6,10 @@ const orgSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    region: {
+        type: String,
+        required: true
     }
 })
 

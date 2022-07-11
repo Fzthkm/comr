@@ -3,7 +3,10 @@ const controller = require('../controllers/organisation')
 const router = express.Router()
 
 
-router.get('/get', controller.getAll)
-router.post('/create', controller.create)
+router.post('/', controller.create)
+router.get('/', controller.getAll)
+router.get('/:id', controller.getById)
+router.patch('/:id', controller.update)
+router.delete('/:id', controller.remove)
 
 module.exports = router
